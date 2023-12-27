@@ -25,7 +25,7 @@ def get_message_history(user_id: str) -> list:
     import os
 
     if not os.path.exists(f"message_history_{user_id}.json"):
-        with open("message_history.json", "w") as f:
+        with open(f"message_history_{user_id}.json", "w") as f:
             json.dump([], f)
         return []
 
