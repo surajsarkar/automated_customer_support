@@ -6,3 +6,6 @@ twcs.csv
 ./twcs.csv
 
 *.ipynb
+
+./.vscode
+.vscode/
