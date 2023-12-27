@@ -64,4 +64,11 @@ def notify_on_mail(message: str):
     server.quit()
 
 
+def load_config():
+    import json
+    import os
 
+    with open("config.json", "r") as f:
+        config = json.load(f)
+    for key, value in config.items():
+        os.environ[key.strip()] = value.strip() if isinstance(value, str) else value
