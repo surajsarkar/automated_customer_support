@@ -72,3 +72,18 @@ def load_config():
         config = json.load(f)
     for key, value in config.items():
         os.environ[key.strip()] = value.strip() if isinstance(value, str) else value
+
+
+def main_agent(client: OpenAI):
+    user_query = input("query: ")
+
+    if user_query == "exit":
+        print("Bye")
+        return
+    response = get_query_response(client, user_query)
+    update_msg_history({"role": "assistant", "content": response})
+    query_is_urgent = query_convays_urgency(client, user_query)
+
+    if query_is_urgent:
+        notify_on_mail(f"got some urgent query from user: {user_query}, responded with: {response}")
+    print(f"🤖 : {response}")

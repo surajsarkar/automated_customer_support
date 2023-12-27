@@ -9,3 +9,8 @@ twcs.csv
 
 ./.vscode
 .vscode/
+./config.json
+config.json
+
+__pycache__/
+```
